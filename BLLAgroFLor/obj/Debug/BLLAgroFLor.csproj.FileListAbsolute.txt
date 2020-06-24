@@ -1,0 +1,11 @@
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\BLLAgroFLor.dll.config
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\BLLAgroFLor.dll
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\BLLAgroFLor.pdb
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\EntityFramework.dll
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\EntityFramework.SqlServer.dll
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\EntityFramework.xml
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\bin\Debug\EntityFramework.SqlServer.xml
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\obj\Debug\BLLAgroFLor.csproj.CoreCompileInputs.cache
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\obj\Debug\BLLAgroFLor.csproj.CopyComplete
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\obj\Debug\BLLAgroFLor.dll
+D:\Sexto\Certificacion I\ProyectoFinal\RepoAgroFlor\BLLAgroFLor\obj\Debug\BLLAgroFLor.pdb

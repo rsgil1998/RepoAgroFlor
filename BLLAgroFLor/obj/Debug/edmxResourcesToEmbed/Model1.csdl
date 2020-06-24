@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAgroFlorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="medidas" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tallos_bonche" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="floricola" Relationship="Self.FK_floricola_config" FromRole="config" ToRole="floricola" />
+  </EntityType>
+  <EntityType Name="floricola">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="config_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="config" Relationship="Self.FK_floricola_config" FromRole="floricola" ToRole="config" />
+    <NavigationProperty Name="registro" Relationship="Self.FK_registro_floricola" FromRole="floricola" ToRole="registro" />
+  </EntityType>
+  <EntityType Name="registro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="variedad_id" Type="Int32" Nullable="false" />
+    <Property Name="floricola_id" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="bonche_med" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="precio_tall_exp" Type="Double" />
+    <Property Name="tall_nacional" Type="Int32" />
+    <Property Name="total_tallos" Type="Int32" />
+    <Property Name="precio_nac" Type="Double" />
+    <NavigationProperty Name="floricola" Relationship="Self.FK_registro_floricola" FromRole="registro" ToRole="floricola" />
+    <NavigationProperty Name="variedades" Relationship="Self.FK_registro_variedades" FromRole="registro" ToRole="variedades" />
+  </EntityType>
+  <EntityType Name="variedades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_matas" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="registro" Relationship="Self.FK_registro_variedades" FromRole="variedades" ToRole="registro" />
+  </EntityType>
+  <Association Name="FK_floricola_config">
+    <End Role="config" Type="Self.config" Multiplicity="1" />
+    <End Role="floricola" Type="Self.floricola" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="config">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="floricola">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_floricola">
+    <End Role="floricola" Type="Self.floricola" Multiplicity="1" />
+    <End Role="registro" Type="Self.registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="floricola">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="floricola_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_variedades">
+    <End Role="variedades" Type="Self.variedades" Multiplicity="1" />
+    <End Role="registro" Type="Self.registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="variedades">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="variedad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbAgroFlorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="config" EntityType="Self.config" />
+    <EntitySet Name="floricola" EntityType="Self.floricola" />
+    <EntitySet Name="registro" EntityType="Self.registro" />
+    <EntitySet Name="variedades" EntityType="Self.variedades" />
+    <AssociationSet Name="FK_floricola_config" Association="Self.FK_floricola_config">
+      <End Role="config" EntitySet="config" />
+      <End Role="floricola" EntitySet="floricola" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_floricola" Association="Self.FK_registro_floricola">
+      <End Role="floricola" EntitySet="floricola" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_variedades" Association="Self.FK_registro_variedades">
+      <End Role="variedades" EntitySet="variedades" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAgroFlorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="medidas" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="tallos_bonche" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="floricola">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="config_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="registro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="variedad_id" Type="int" Nullable="false" />
+    <Property Name="floricola_id" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="bonche_med" Type="varchar" MaxLength="200" />
+    <Property Name="precio_tall_exp" Type="float" />
+    <Property Name="tall_nacional" Type="int" />
+    <Property Name="total_tallos" Type="int" />
+    <Property Name="precio_nac" Type="float" />
+  </EntityType>
+  <EntityType Name="variedades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="total_matas" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_floricola_config">
+    <End Role="config" Type="Self.config" Multiplicity="1" />
+    <End Role="floricola" Type="Self.floricola" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="config">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="floricola">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_floricola">
+    <End Role="floricola" Type="Self.floricola" Multiplicity="1" />
+    <End Role="registro" Type="Self.registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="floricola">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="floricola_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_variedades">
+    <End Role="variedades" Type="Self.variedades" Multiplicity="1" />
+    <End Role="registro" Type="Self.registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="variedades">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="variedad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbAgroFlorModelStoreContainer">
+    <EntitySet Name="config" EntityType="Self.config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="floricola" EntityType="Self.floricola" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="registro" EntityType="Self.registro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="variedades" EntityType="Self.variedades" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_floricola_config" Association="Self.FK_floricola_config">
+      <End Role="config" EntitySet="config" />
+      <End Role="floricola" EntitySet="floricola" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_floricola" Association="Self.FK_registro_floricola">
+      <End Role="floricola" EntitySet="floricola" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_variedades" Association="Self.FK_registro_variedades">
+      <End Role="variedades" EntitySet="variedades" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbAgroFlorModelStoreContainer" CdmEntityContainer="dbAgroFlorEntities">
+    <EntitySetMapping Name="config">
+      <EntityTypeMapping TypeName="dbAgroFlorModel.config">
+        <MappingFragment StoreEntitySet="config">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="medidas" ColumnName="medidas" />
+          <ScalarProperty Name="tallos_bonche" ColumnName="tallos_bonche" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="floricola">
+      <EntityTypeMapping TypeName="dbAgroFlorModel.floricola">
+        <MappingFragment StoreEntitySet="floricola">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="config_id" ColumnName="config_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registro">
+      <EntityTypeMapping TypeName="dbAgroFlorModel.registro">
+        <MappingFragment StoreEntitySet="registro">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="variedad_id" ColumnName="variedad_id" />
+          <ScalarProperty Name="floricola_id" ColumnName="floricola_id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="bonche_med" ColumnName="bonche_med" />
+          <ScalarProperty Name="precio_tall_exp" ColumnName="precio_tall_exp" />
+          <ScalarProperty Name="tall_nacional" ColumnName="tall_nacional" />
+          <ScalarProperty Name="total_tallos" ColumnName="total_tallos" />
+          <ScalarProperty Name="precio_nac" ColumnName="precio_nac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="variedades">
+      <EntityTypeMapping TypeName="dbAgroFlorModel.variedades">
+        <MappingFragment StoreEntitySet="variedades">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="total_matas" ColumnName="total_matas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
